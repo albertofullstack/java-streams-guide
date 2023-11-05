@@ -28,7 +28,8 @@ public class Lecture2 {
   @Test
   public void rangeIteratingLists() throws Exception {
     List<Person> people = MockData.getPeople();
-
+    IntStream.range(0, people.size())
+        .forEach(index -> System.out.println(people.get(index)));
   }
 
   @Test
