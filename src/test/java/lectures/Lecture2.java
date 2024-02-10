@@ -32,6 +32,10 @@ public class Lecture2 {
         .forEach(index -> System.out.println(people.get(index)));
   }
 
+  /**
+   * Returns the first 20 even numbers
+   * @throws Exception
+   */
   @Test
   public void intStreamIterate() throws Exception {
     IntStream.iterate(0, operand -> operand + 1)
