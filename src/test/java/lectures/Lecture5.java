@@ -31,18 +31,26 @@ public class Lecture5 {
   public void ourFirstMapping() throws Exception {
     // transform from one data type to another
     List<Person> people = MockData.getPeople();
-
+    List<PersonDTO> personDTOList = people.stream()
+        .map(PersonDTO::map)
+        .collect(Collectors.toList());
+    personDTOList.forEach(System.out::println);
+    assertThat(personDTOList).hasSize(people.size());
   }
 
   @Test
   public void averageCarPrice() throws Exception {
     // calculate average of car prices
-
+    // transform from one data type to another
+    List<Car> cars = MockData.getCars();
+    cars.stream()
+        .mapToDouble(Car::getPrice)
+        .average().ifPresent(System.out::println);
   }
 
   @Test
   public void test() throws Exception {
-
+    MockData.getCars().forEach(System.out::println);
   }
 }
 
