@@ -8,6 +8,7 @@ import com.google.common.collect.ImmutableList;
 import java.math.BigDecimal;
 import java.util.DoubleSummaryStatistics;
 import java.util.List;
+import java.util.OptionalDouble;
 import java.util.stream.Collectors;
 import mockdata.MockData;
 import org.junit.Test;
@@ -16,17 +17,31 @@ public class Lecture7 {
 
   @Test
   public void count() throws Exception {
-
+    long count = MockData.getPeople()
+        .stream()
+        .filter(person -> "female".equalsIgnoreCase(person.getGender()))
+        .count();
+    System.out.println(count);
   }
 
   @Test
   public void min() throws Exception {
-
+    double minPrice = MockData.getCars().stream()
+        .filter(car -> car.getColor().equalsIgnoreCase("yellow"))
+        .mapToDouble(Car::getPrice)
+        .min()
+        .orElse(0);
+    System.out.println(minPrice);
   }
 
   @Test
   public void max() throws Exception {
-
+    double maxPrice = MockData.getCars().stream()
+        .filter(car -> car.getColor().equalsIgnoreCase("yellow"))
+        .mapToDouble(Car::getPrice)
+        .max()
+        .orElse(0);
+    System.out.println(maxPrice);
   }
 
 
@@ -34,6 +49,11 @@ public class Lecture7 {
   public void average() throws Exception {
     List<Car> cars = MockData.getCars();
 
+    double averagePrice = cars.stream()
+        .mapToDouble(Car::getPrice)
+        .average()
+        .orElse(0);
+    System.out.println(averagePrice);
   }
 
   @Test
