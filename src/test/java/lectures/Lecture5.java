@@ -53,6 +53,3 @@ public class Lecture5 {
     MockData.getCars().forEach(System.out::println);
   }
 }
-
-
-
