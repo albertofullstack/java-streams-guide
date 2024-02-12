@@ -3,10 +3,10 @@ package lectures;
 
 import beans.Car;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import mockdata.MockData;
 import org.assertj.core.util.Lists;
@@ -40,8 +40,8 @@ public class Lecture8 {
             "Alex",
             "Alex"
         );
-
-
+    Map<String, Long> namesCount = names.stream()
+        .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+    namesCount.forEach((name, count) -> System.out.printf("%s > %s\n", name, count));
   }
-
 }
