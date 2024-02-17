@@ -11,7 +11,8 @@ public class Lecture11 {
   @Test
   public void joiningStrings() throws Exception {
     List<String> names = ImmutableList.of("anna", "john", "marcos", "helena", "yasmin");
-
+    String namesStr = String.join(", ", names);
+    System.out.println(namesStr);
   }
 
   @Test
