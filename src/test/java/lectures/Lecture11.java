@@ -18,6 +18,7 @@ public class Lecture11 {
   @Test
   public void joiningStringsWithStream() throws Exception {
     List<String> names = ImmutableList.of("anna", "john", "marcos", "helena", "yasmin");
-
+    String namesWithStream = names.stream().collect(Collectors.joining(", "));
+    System.out.println(namesWithStream);
   }
 }
